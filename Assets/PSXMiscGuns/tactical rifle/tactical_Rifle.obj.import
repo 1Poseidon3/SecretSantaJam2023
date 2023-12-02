@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ccrltrqs3gvf8"
+path="res://.godot/imported/tactical_Rifle.obj-6532781fb0224e4500d347ce7906101e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tactical_Rifle.obj-6532781fb0224e4500d347ce7906101e.mesh"]
+
+source_file="res://Assets/PSXMiscGuns/tactical rifle/tactical_Rifle.obj"
+dest_files=["res://.godot/imported/tactical_Rifle.obj-6532781fb0224e4500d347ce7906101e.mesh", "res://.godot/imported/tactical_Rifle.obj-6532781fb0224e4500d347ce7906101e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

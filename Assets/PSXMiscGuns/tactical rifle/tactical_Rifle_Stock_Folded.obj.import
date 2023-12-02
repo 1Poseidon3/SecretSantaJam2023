@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bcm5h7shfbml"
+path="res://.godot/imported/tactical_Rifle_Stock_Folded.obj-20615124430997e1b8174faded6f61cb.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tactical_Rifle_Stock_Folded.obj-20615124430997e1b8174faded6f61cb.mesh"]
+
+source_file="res://Assets/PSXMiscGuns/tactical rifle/tactical_Rifle_Stock_Folded.obj"
+dest_files=["res://.godot/imported/tactical_Rifle_Stock_Folded.obj-20615124430997e1b8174faded6f61cb.mesh", "res://.godot/imported/tactical_Rifle_Stock_Folded.obj-20615124430997e1b8174faded6f61cb.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

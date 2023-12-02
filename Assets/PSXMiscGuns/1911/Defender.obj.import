@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bxvuwjhsmic4d"
+path="res://.godot/imported/Defender.obj-2ae43a08fbe186e7cc4f5b8bd7bce244.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Defender.obj-2ae43a08fbe186e7cc4f5b8bd7bce244.mesh"]
+
+source_file="res://Assets/PSXMiscGuns/1911/Defender.obj"
+dest_files=["res://.godot/imported/Defender.obj-2ae43a08fbe186e7cc4f5b8bd7bce244.mesh", "res://.godot/imported/Defender.obj-2ae43a08fbe186e7cc4f5b8bd7bce244.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://blaieaqp413k7"]
+
+[ext_resource type="Script" path="res://addons/terrain_3d/tools/importer.gd" id="1_60b8f"]
+[ext_resource type="Terrain3DStorage" uid="uid://c2sntdiffalro" path="res://Terrain/TerrainTest.res" id="1_truym"]
+[ext_resource type="Terrain3DTextureList" uid="uid://b1wqlflhxkvnv" path="res://Terrain/TerrainTestTextureList.res" id="2_lj61h"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kyom0"]
+noise_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ku1gh"]
+generate_mipmaps = false
+seamless = true
+noise = SubResource("FastNoiseLite_kyom0")
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_cjpaa"]
+_shader_parameters = {
+"blend_sharpness": 0.87,
+"height_blending": true,
+"noise_scale": 0.1,
+"noise_texture": SubResource("NoiseTexture2D_ku1gh")
+}
+show_checkered = true
+show_colormap = true
+
+[node name="Importer" type="Terrain3D"]
+storage = ExtResource("1_truym")
+material = SubResource("Terrain3DMaterial_cjpaa")
+texture_list = ExtResource("2_lj61h")
+script = ExtResource("1_60b8f")
+height_file_name = "res://Assets/Changed/TestTerrain_height.png"
+control_file_name = "res://Assets/Changed/TestTerrain_normal.png"
+color_file_name = "res://Assets/Changed/TestTerrain_diffuseOriginal.png"
+import_scale = 15.0

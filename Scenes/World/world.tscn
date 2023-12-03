@@ -1,13 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://bpi2h3ukqi8yd"]
+[gd_scene load_steps=11 format=3 uid="uid://bpi2h3ukqi8yd"]
 
 [ext_resource type="PackedScene" uid="uid://b75pyc6cs5vc1" path="res://Scenes/Player/player.tscn" id="1_itanj"]
 [ext_resource type="Script" path="res://Scenes/World/world.gd" id="1_o5wvq"]
 [ext_resource type="Texture2D" uid="uid://s1m17hlv7gvx" path="res://Assets/Tiny Texture Packs/1/128x128/Grass/Grass_05-128x128.png" id="2_hswp7"]
-[ext_resource type="Texture2D" uid="uid://bmmh2juagvtsd" path="res://Assets/Tiny Texture Packs/1/512x512/Bricks/Bricks_22-512x512.png" id="3_ja7dx"]
-[ext_resource type="Texture2D" uid="uid://bri7ahddm7yve" path="res://Assets/Tiny Texture Packs/2/256x256/Tile/Tile_11-256x256.png" id="4_nuo7y"]
-[ext_resource type="Texture2D" uid="uid://b3fpnyapli7q2" path="res://Assets/Tiny Texture Packs/3/256x256/Box/Box_23-256x256.png" id="5_bt05k"]
-[ext_resource type="Texture2D" uid="uid://bgbpy8eg6h7uq" path="res://Assets/Tiny Texture Packs/3/256x256/Metal/Metal_21-256x256.png" id="6_ahv53"]
-[ext_resource type="PackedScene" uid="uid://bt0ggj7m80tt6" path="res://Scenes/Trees/tree_07.tscn" id="7_f0t46"]
+[ext_resource type="Terrain3DStorage" uid="uid://bbo72xd4s61co" path="res://Terrain/TerrainTest.tres" id="4_x74rf"]
+[ext_resource type="Terrain3DMaterial" uid="uid://s41ehbgja8us" path="res://Terrain/TestTerrainMaterial.res" id="5_vpecs"]
+[ext_resource type="Terrain3DTextureList" uid="uid://b1wqlflhxkvnv" path="res://Terrain/TerrainTestTextureList.res" id="6_5b1xr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_opfn0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -26,22 +24,6 @@ glow_enabled = true
 albedo_texture = ExtResource("2_hswp7")
 uv1_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rdw4w"]
-albedo_texture = ExtResource("3_ja7dx")
-uv1_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3gno"]
-albedo_texture = ExtResource("4_nuo7y")
-uv1_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p20pe"]
-albedo_texture = ExtResource("5_bt05k")
-uv1_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jeu65"]
-albedo_texture = ExtResource("6_ahv53")
-uv1_triplanar = true
-
 [node name="World" type="Node3D"]
 script = ExtResource("1_o5wvq")
 
@@ -57,58 +39,13 @@ environment = SubResource("Environment_512ys")
 [node name="Geometry" type="Node3D" parent="."]
 
 [node name="Floor" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.916595, -0.4995, -5.60083)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 1, 250)
 material_override = SubResource("StandardMaterial3D_d01em")
 use_collision = true
-size = Vector3(50, 0.001, 50)
-
-[node name="Wall1" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.923607, 1.25, -30.0993)
-material_override = SubResource("StandardMaterial3D_rdw4w")
-use_collision = true
-size = Vector3(50.0077, 3.5, 1)
-
-[node name="Wall2" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.923607, 1.25, 18.8961)
-material_override = SubResource("StandardMaterial3D_rdw4w")
-use_collision = true
-size = Vector3(50.0077, 3.5, 1)
-
-[node name="Wall3" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 23.571, 1.25, -5.59927)
-material_override = SubResource("StandardMaterial3D_rdw4w")
-use_collision = true
-size = Vector3(47.9911, 3.5, 1)
-
-[node name="Wall4" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.423, 1.25, -5.599)
-material_override = SubResource("StandardMaterial3D_rdw4w")
-use_collision = true
-size = Vector3(47.9911, 3.5, 1)
-
-[node name="Box1" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(-0.743822, 0, -0.668378, 0, 1, 0, 0.668378, 0, -0.743822, 9.55757, 0.117657, -18.5215)
-material_override = SubResource("StandardMaterial3D_l3gno")
-use_collision = true
-size = Vector3(4, 4, 4)
-
-[node name="Box2" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(-0.743822, 0, -0.668378, 0, 1, 0, 0.668378, 0, -0.743822, 5.56363, -0.711096, -14.9326)
-material_override = SubResource("StandardMaterial3D_p20pe")
-use_collision = true
-size = Vector3(4, 4, 4)
-
-[node name="Box3" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(-0.743822, 0, -0.668378, 0, 1, 0, 0.668378, 0, -0.743822, 1.32126, -1.53423, -11.1206)
-material_override = SubResource("StandardMaterial3D_jeu65")
-use_collision = true
-size = Vector3(4, 4, 4)
-
-[node name="Tree07" parent="Geometry/Box3" instance=ExtResource("7_f0t46")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.807402, 1, -12.6541)
+size = Vector3(330, 0.001, 330)
 
 [node name="Player" parent="." instance=ExtResource("1_itanj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.31228, 0.722902, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 2, 250)
 look_down_limit = -80
 look_up_limit = 80
 
@@ -116,3 +53,8 @@ look_up_limit = 80
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.930171, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Player/Head"]
+
+[node name="Terrain3D" type="Terrain3D" parent="."]
+storage = ExtResource("4_x74rf")
+material = ExtResource("5_vpecs")
+texture_list = ExtResource("6_5b1xr")

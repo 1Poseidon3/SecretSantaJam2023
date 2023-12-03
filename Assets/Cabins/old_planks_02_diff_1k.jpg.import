@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqdn2ku4myy2r"
-path.s3tc="res://.godot/imported/tree07.png-ecda7b3947004d10c5d2f3cb241b6a2d.s3tc.ctex"
+uid="uid://be6o1upmor3rg"
+path.s3tc="res://.godot/imported/old_planks_02_diff_1k.jpg-dc6e8311f68b8dcd2ba5930f5ccb2582.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/tree_pack_1.1/textures/tree07.png"
-dest_files=["res://.godot/imported/tree07.png-ecda7b3947004d10c5d2f3cb241b6a2d.s3tc.ctex"]
+source_file="res://Assets/Cabins/old_planks_02_diff_1k.jpg"
+dest_files=["res://.godot/imported/old_planks_02_diff_1k.jpg-dc6e8311f68b8dcd2ba5930f5ccb2582.s3tc.ctex"]
 
 [params]
 

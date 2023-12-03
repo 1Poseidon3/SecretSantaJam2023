@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqdn2ku4myy2r"
-path.s3tc="res://.godot/imported/tree07.png-ecda7b3947004d10c5d2f3cb241b6a2d.s3tc.ctex"
+uid="uid://dfjccxvi1ls4m"
+path.s3tc="res://.godot/imported/refe.jpg-2a5b482fe9a2fad36cc58c53d080e27e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/tree_pack_1.1/textures/tree07.png"
-dest_files=["res://.godot/imported/tree07.png-ecda7b3947004d10c5d2f3cb241b6a2d.s3tc.ctex"]
+source_file="res://Assets/Low Poly Food/refe.jpg"
+dest_files=["res://.godot/imported/refe.jpg-2a5b482fe9a2fad36cc58c53d080e27e.s3tc.ctex"]
 
 [params]
 

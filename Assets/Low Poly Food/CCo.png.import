@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqdn2ku4myy2r"
-path.s3tc="res://.godot/imported/tree07.png-ecda7b3947004d10c5d2f3cb241b6a2d.s3tc.ctex"
+uid="uid://nsm2cc7tv8iy"
+path.s3tc="res://.godot/imported/CCo.png-3e3443939acab9ed1a53b5694f760529.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/tree_pack_1.1/textures/tree07.png"
-dest_files=["res://.godot/imported/tree07.png-ecda7b3947004d10c5d2f3cb241b6a2d.s3tc.ctex"]
+source_file="res://Assets/Low Poly Food/CCo.png"
+dest_files=["res://.godot/imported/CCo.png-3e3443939acab9ed1a53b5694f760529.s3tc.ctex"]
 
 [params]
 

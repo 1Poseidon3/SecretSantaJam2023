@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqdn2ku4myy2r"
-path.s3tc="res://.godot/imported/tree07.png-ecda7b3947004d10c5d2f3cb241b6a2d.s3tc.ctex"
+uid="uid://dfoo0c37elp8m"
+path.s3tc="res://.godot/imported/Pe7.png-88ecc7a2e5c3fa6f0dfc65f23b8a8364.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/tree_pack_1.1/textures/tree07.png"
-dest_files=["res://.godot/imported/tree07.png-ecda7b3947004d10c5d2f3cb241b6a2d.s3tc.ctex"]
+source_file="res://Assets/Horror Characters/Pe7.png"
+dest_files=["res://.godot/imported/Pe7.png-88ecc7a2e5c3fa6f0dfc65f23b8a8364.s3tc.ctex"]
 
 [params]
 

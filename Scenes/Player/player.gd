@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 7.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 5.0
 const SENSITIVITY = 0.001
 
 var gravity = 9.8 #ProjectSettings.get_setting("physics/3d/default_gravity")

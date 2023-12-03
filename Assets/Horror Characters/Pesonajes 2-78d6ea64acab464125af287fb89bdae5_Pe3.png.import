@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqdn2ku4myy2r"
-path.s3tc="res://.godot/imported/tree07.png-ecda7b3947004d10c5d2f3cb241b6a2d.s3tc.ctex"
+uid="uid://ldnixi6iglcl"
+path.s3tc="res://.godot/imported/Pesonajes 2-78d6ea64acab464125af287fb89bdae5_Pe3.png-de009d5bf36438fda0ae3d380444c04d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://Assets/tree_pack_1.1/textures/tree07.png"
-dest_files=["res://.godot/imported/tree07.png-ecda7b3947004d10c5d2f3cb241b6a2d.s3tc.ctex"]
+source_file="res://Assets/Horror Characters/Pesonajes 2-78d6ea64acab464125af287fb89bdae5_Pe3.png"
+dest_files=["res://.godot/imported/Pesonajes 2-78d6ea64acab464125af287fb89bdae5_Pe3.png-de009d5bf36438fda0ae3d380444c04d.s3tc.ctex"]
 
 [params]
 

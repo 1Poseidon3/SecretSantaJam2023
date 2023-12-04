@@ -46,6 +46,7 @@ size = Vector3(330, 0.001, 330)
 
 [node name="Player" parent="." instance=ExtResource("1_itanj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 2, 250)
+wall_min_slide_angle = 0.523599
 look_down_limit = -80
 look_up_limit = 80
 

@@ -1,24 +1,38 @@
-[gd_scene load_steps=11 format=3 uid="uid://bpi2h3ukqi8yd"]
+[gd_scene load_steps=15 format=3 uid="uid://bpi2h3ukqi8yd"]
 
 [ext_resource type="PackedScene" uid="uid://b75pyc6cs5vc1" path="res://Scenes/Player/player.tscn" id="1_itanj"]
 [ext_resource type="Script" path="res://Scenes/World/world.gd" id="1_o5wvq"]
 [ext_resource type="Texture2D" uid="uid://s1m17hlv7gvx" path="res://Assets/Tiny Texture Packs/1/128x128/Grass/Grass_05-128x128.png" id="2_hswp7"]
+[ext_resource type="Texture2D" uid="uid://bvwpschvptjat" path="res://Assets/Sky/Street View 360.jpg" id="2_sb3kc"]
+[ext_resource type="PackedScene" uid="uid://dk6xj474hw45u" path="res://Scenes/Cabins/cabin_3.tscn" id="3_cjy1s"]
+[ext_resource type="PackedScene" uid="uid://c2861vj0yen2i" path="res://Scenes/Cabins/cabin_2.tscn" id="4_6lmxf"]
 [ext_resource type="Terrain3DStorage" uid="uid://bbo72xd4s61co" path="res://Terrain/TerrainTest.tres" id="4_x74rf"]
+[ext_resource type="PackedScene" uid="uid://c6f81wt8c8agj" path="res://Scenes/Cabins/cabin_1.tscn" id="5_nmwd5"]
 [ext_resource type="Terrain3DMaterial" uid="uid://s41ehbgja8us" path="res://Terrain/TestTerrainMaterial.res" id="5_vpecs"]
 [ext_resource type="Terrain3DTextureList" uid="uid://b1wqlflhxkvnv" path="res://Terrain/TerrainTestTextureList.res" id="6_5b1xr"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_opfn0"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_g8b12"]
+panorama = ExtResource("2_sb3kc")
 
-[sub_resource type="Sky" id="Sky_7q1yd"]
-sky_material = SubResource("ProceduralSkyMaterial_opfn0")
+[sub_resource type="Sky" id="Sky_8qup3"]
+sky_material = SubResource("PanoramaSkyMaterial_g8b12")
 
 [sub_resource type="Environment" id="Environment_512ys"]
 background_mode = 2
-sky = SubResource("Sky_7q1yd")
+sky = SubResource("Sky_8qup3")
+ambient_light_color = Color(0.396078, 0.396078, 0.396078, 1)
 tonemap_mode = 2
 glow_enabled = true
+fog_enabled = true
+fog_density = 0.005
+fog_aerial_perspective = 0.5
+volumetric_fog_enabled = true
+volumetric_fog_length = 10.0
+volumetric_fog_ambient_inject = 1.0
+volumetric_fog_sky_affect = 0.1
+adjustment_enabled = true
+adjustment_contrast = 2.0
+adjustment_saturation = 0.75
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d01em"]
 albedo_texture = ExtResource("2_hswp7")
@@ -31,6 +45,8 @@ script = ExtResource("1_o5wvq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_energy = 0.5
+light_angular_distance = 30.0
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
@@ -43,6 +59,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 1, 250)
 material_override = SubResource("StandardMaterial3D_d01em")
 use_collision = true
 size = Vector3(330, 0.001, 330)
+
+[node name="Cabin3" parent="Geometry" instance=ExtResource("3_cjy1s")]
+transform = Transform3D(2.15, 0, 0, 0, 2.15, 0, 0, 0, 2.15, 250, 2.27518, 229.947)
+
+[node name="Cabin2" parent="Geometry" instance=ExtResource("4_6lmxf")]
+transform = Transform3D(2.15, 0, 0, 0, 2.15, 0, 0, 0, 2.15, 228.651, 2.27518, 250)
+
+[node name="Cabin1" parent="Geometry" instance=ExtResource("5_nmwd5")]
+transform = Transform3D(2.15, 0, 0, 0, 2.15, 0, 0, 0, 2.15, 269.708, 2.27518, 250)
 
 [node name="Player" parent="." instance=ExtResource("1_itanj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 2, 250)

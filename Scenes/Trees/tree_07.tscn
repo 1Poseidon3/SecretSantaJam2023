@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bt0ggj7m80tt6"]
 
-[ext_resource type="Texture2D" uid="uid://cqdn2ku4myy2r" path="res://Assets/tree_pack_1.1/textures/tree07.png" id="1_y76b1"]
+[ext_resource type="Texture2D" uid="uid://cqdn2ku4myy2r" path="res://Assets/tree_pack_1.1/textures/tree07.png" id="1_ltg1x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mhxgh"]
 resource_name = "tree07"
@@ -42,11 +42,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_voldw")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jq6qq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_utnmj"]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
-albedo_texture = ExtResource("1_y76b1")
+albedo_texture = ExtResource("1_ltg1x")
 
 [node name="Tree07" type="StaticBody3D"]
 
@@ -54,8 +54,4 @@ albedo_texture = ExtResource("1_y76b1")
 transform = Transform3D(1, 0, 0, 0, 1, 1.62921e-07, 0, -1.62921e-07, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_7e8gp")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_jq6qq")
-
-[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
-depth = 0.75
-polygon = PackedVector2Array(0.342243, -0.00262403, 0.0683416, 10.0002, -0.0946504, 10.0031, -0.347097, 0.000439703)
+surface_material_override/0 = SubResource("StandardMaterial3D_utnmj")

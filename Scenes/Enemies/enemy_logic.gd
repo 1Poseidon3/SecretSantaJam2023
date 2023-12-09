@@ -11,7 +11,7 @@ const SPEED = 4.0
 func _ready():
 	player = get_node(player_path)
 
-func _process(delta):
+func _physics_process(_delta):
 	velocity = Vector3.ZERO
 	nav_agent.set_target_position(player.global_transform.origin)
 	var next_nav_point = nav_agent.get_next_path_position()

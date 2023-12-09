@@ -7,6 +7,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pi6im"]
 
 [node name="Player" type="CharacterBody3D"]
+floor_max_angle = 1.0472
 script = ExtResource("1_h23ow")
 
 [node name="Body" type="MeshInstance3D" parent="."]

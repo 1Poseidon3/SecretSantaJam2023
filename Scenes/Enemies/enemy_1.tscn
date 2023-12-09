@@ -271,5 +271,6 @@ bones/24/rotation = Quaternion(2.77556e-17, 1.73472e-18, 6.93889e-18, 1)
 bones/24/scale = Vector3(1, 1, 1)
 
 [node name="Cube_014" type="MeshInstance3D" parent="Skeleton3D"]
+transform = Transform3D(1, 5.21083e-15, -4.77048e-15, -4.77048e-15, 1, 1.42109e-14, 4.77048e-15, -1.42109e-14, 1, -2.98155e-16, 0, 0)
 mesh = SubResource("ArrayMesh_jwnv0")
 skin = SubResource("Skin_cg2kf")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bpi2h3ukqi8yd"]
+[gd_scene load_steps=48 format=3 uid="uid://bpi2h3ukqi8yd"]
 
 [ext_resource type="PackedScene" uid="uid://b75pyc6cs5vc1" path="res://Scenes/Player/player.tscn" id="1_itanj"]
 [ext_resource type="Script" path="res://Scenes/World/world.gd" id="1_o5wvq"]
@@ -36,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://cewks2a770c2a" path="res://Scenes/Rocks/rock_7.tscn" id="21_kc4v6"]
 [ext_resource type="PackedScene" uid="uid://vsldlrwbla50" path="res://Scenes/Rocks/rock_8.tscn" id="22_6firj"]
 [ext_resource type="PackedScene" uid="uid://yewxuy661u2i" path="res://Scenes/Enemies/enemy_1.tscn" id="32_aa5ef"]
+[ext_resource type="PackedScene" uid="uid://diywu3l3gh04" path="res://Scenes/Cabins/door.tscn" id="32_la08h"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_g8b12"]
 panorama = ExtResource("2_sb3kc")
@@ -19701,6 +19702,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.4651, 2.41209, -50.1932)
 [node name="Rock9" parent="Geometry/Foliage/Rocks" instance=ExtResource("22_6firj")]
 transform = Transform3D(-0.415995, 0, -0.909367, 0, 1, 0, 0.909367, 0, -0.415995, -50.3465, 1.38121, 8.04755)
 
+[node name="Doors" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 0, 250)
+
+[node name="Door" parent="Doors" instance=ExtResource("32_la08h")]
+transform = Transform3D(-1.52637, 0, -1.48563, 0, 2.13, 0, 1.48563, 0, -1.52637, 24.8387, 2.50604, 20.5871)
+
 [node name="EnemySpawnPoints" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 0, 250)
 
@@ -19780,6 +19787,11 @@ look_up_limit = 80
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.930171, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Player/Head"]
+
+[node name="RayCast3D" type="RayCast3D" parent="Player/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.819571, 0)
+target_position = Vector3(0, 0, -3)
+collision_mask = 9
 
 [node name="Terrain3D" type="Terrain3D" parent="."]
 storage = ExtResource("4_x74rf")

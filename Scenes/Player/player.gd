@@ -16,6 +16,7 @@ signal player_ready
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
+@onready var raycast = $Head/RayCast3D
 
 @export var look_down_limit = -40
 @export var look_up_limit = 60
@@ -23,16 +24,18 @@ signal player_ready
 @export var bob_amplitude = 0.08
 @export var base_fov = 75.0
 @export var fov_change = 1.5
+@export var ray_length = 10.0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$Body.visible = false
 	emit_signal("player_ready", self)
-	
+
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
+		raycast.rotate_y(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(look_down_limit), deg_to_rad(look_up_limit))
 
 func _physics_process(delta):
@@ -70,7 +73,13 @@ func _physics_process(delta):
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	
 	move_and_slide()
-	
+
+func _process(_delta):
+	if raycast.is_colliding():
+		var colliding_object = raycast.get_collider()
+		if colliding_object.has_method("show_price"):
+			colliding_object.show_price()
+
 func headbob(time) -> Vector3:
 	var pos = Vector3.ZERO
 	pos.y = sin(time * bob_frequency) * bob_amplitude

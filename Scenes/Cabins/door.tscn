@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://diywu3l3gh04"]
+[gd_scene load_steps=8 format=3 uid="uid://diywu3l3gh04"]
 
+[ext_resource type="Script" path="res://Scenes/Cabins/door.gd" id="1_ct0q6"]
 [ext_resource type="Texture2D" uid="uid://b1c486stuepel" path="res://Assets/Cabins/doors_wood_doors_0012_01_s.jpg" id="1_yv3p7"]
+[ext_resource type="FontFile" uid="uid://bww4esg0dywdp" path="res://Assets/Fonts/ApeMount-WyPM9.ttf" id="3_uo8ec"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r70vg"]
 resource_name = "Material"
@@ -45,6 +47,9 @@ shadow_mesh = SubResource("ArrayMesh_236b6")
 points = PackedVector3Array(-1.15484e-06, 0.703376, 0.582672, -0.0691303, 0.703376, 0.582672, -1.15484e-06, -0.703383, 0.582672, -1.15484e-06, 0.703376, -0.0182523, -0.0691303, 0.703376, -0.0182523, -0.0691303, -0.703383, 0.582672, -1.15484e-06, -0.703383, -0.0182523, -0.0691303, -0.703383, -0.0182523)
 
 [node name="Door" type="StaticBody3D"]
+collision_layer = 9
+collision_mask = 9
+script = ExtResource("1_ct0q6")
 
 [node name="Cube_033" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -54,3 +59,15 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_m3n0u")
+
+[node name="Price" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.286068, 0.260146, 0.075531)
+visible = false
+text = "Price:
+100"
+font = ExtResource("3_uo8ec")
+
+[node name="PriceTextDisappear" type="Timer" parent="."]
+wait_time = 0.25
+
+[connection signal="timeout" from="PriceTextDisappear" to="." method="_on_price_text_disappear_timeout"]

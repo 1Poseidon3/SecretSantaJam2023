@@ -4,9 +4,10 @@ var player = null
 var state_machine
 var runner = false;
 
-const SPEED = 7 #0.5
+const SPEED = 1
 const ATTACK_RANGE = 1.5
 const ATTACK_ANIM_SPEED = 1
+const WALK_ANIM_SPEED = 1
 
 @onready var player_path := get_tree().get_first_node_in_group("Player")
 @onready var nav_agent = $NavigationAgent3D
@@ -26,6 +27,7 @@ func _physics_process(delta):
 			var next_nav_point = nav_agent.get_next_path_position()
 			velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
 			look_at(Vector3(global_position.x + velocity.x, global_position.y, global_position.z + velocity.z), Vector3.UP)
+			anim_tree.advance(delta * 1)
 		"Attack":
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 			anim_tree.advance(delta * ATTACK_ANIM_SPEED)

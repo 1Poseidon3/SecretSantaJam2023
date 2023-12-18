@@ -35,7 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://d1laxmej7qkh7" path="res://Scenes/Rocks/rock_6.tscn" id="20_d8brp"]
 [ext_resource type="PackedScene" uid="uid://cewks2a770c2a" path="res://Scenes/Rocks/rock_7.tscn" id="21_kc4v6"]
 [ext_resource type="PackedScene" uid="uid://vsldlrwbla50" path="res://Scenes/Rocks/rock_8.tscn" id="22_6firj"]
-[ext_resource type="PackedScene" uid="uid://dwtc8djchkim5" path="res://Scenes/Enemies/enemy_1_anmtd.tscn" id="32_vv85r"]
+[ext_resource type="PackedScene" uid="uid://yewxuy661u2i" path="res://Scenes/Enemies/enemy_1.tscn" id="32_aa5ef"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_g8b12"]
 panorama = ExtResource("2_sb3kc")
@@ -19636,6 +19636,8 @@ transform = Transform3D(-0.00267039, 0, -0.999996, 0, 1, 0, 0.999996, 0, -0.0026
 
 [node name="Tree509" parent="Geometry/Foliage/Trees" instance=ExtResource("11_g06yx")]
 transform = Transform3D(-0.00267039, 0, -0.999996, 0, 1, 0, 0.999996, 0, -0.00267039, 10.5812, 7.62939e-06, -120.095)
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionPolygon3D2" type="CollisionPolygon3D" parent="Geometry/Foliage/Trees/Tree509"]
 transform = Transform3D(0.99978, 0, 0.0209424, 0, 1, 0, -0.0209424, 0, 0.99978, 116.776, 2.04049, 122.682)
@@ -19644,6 +19646,8 @@ polygon = PackedVector2Array(112.623, -1.04947, -111.897, -1.0148, -110.558, 4.7
 
 [node name="Tree510" parent="Geometry/Foliage/Trees" instance=ExtResource("12_ebgxn")]
 transform = Transform3D(-0.00267039, 0, -0.999996, 0, 1, 0, 0.999996, 0, -0.00267039, 15.656, 8.10623e-06, -119.513)
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Geometry/Foliage/Trees/Tree510"]
 transform = Transform3D(-0.999779, 0, -0.0209424, 0, 1, 0, 0.0209424, 0, -0.999779, 112.169, 2.04049, -98.9377)
@@ -19652,6 +19656,8 @@ polygon = PackedVector2Array(112.623, -1.04947, -111.897, -1.0148, -110.558, 4.7
 
 [node name="Tree511" parent="Geometry/Foliage/Trees" instance=ExtResource("13_fusxc")]
 transform = Transform3D(-0.00267039, 0, -0.999996, 0, 1, 0, 0.999996, 0, -0.00267039, 17.6982, 7.62939e-06, -120.902)
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Geometry/Foliage/Trees/Tree511"]
 transform = Transform3D(0.0209426, 0, -0.99978, 0, 1, 0, 0.99978, 0, 0.0209426, 1.96228, 2.04049, 18.6134)
@@ -19660,6 +19666,8 @@ polygon = PackedVector2Array(112.623, -1.04947, -111.897, -1.0148, -110.558, 4.7
 
 [node name="Tree512" parent="Geometry/Foliage/Trees" instance=ExtResource("14_uifqf")]
 transform = Transform3D(-0.00267039, 0, -0.999996, 0, 1, 0, 0.999996, 0, -0.00267039, 4.35043, 7.62939e-06, -119.866)
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Geometry/Foliage/Trees/Tree512"]
 transform = Transform3D(-0.0201223, 0, 0.999798, 0, 1, 0, -0.999798, 0, -0.0201223, 227.197, 2.04049, 0.64772)
@@ -19693,12 +19701,74 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.4651, 2.41209, -50.1932)
 [node name="Rock9" parent="Geometry/Foliage/Rocks" instance=ExtResource("22_6firj")]
 transform = Transform3D(-0.415995, 0, -0.909367, 0, 1, 0, 0.909367, 0, -0.415995, -50.3465, 1.38121, 8.04755)
 
-[node name="Enemies" type="Node3D" parent="."]
+[node name="EnemySpawnPoints" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 0, 250)
 
-[node name="Enemy1Anmtd" parent="Enemies" instance=ExtResource("32_vv85r")]
-transform = Transform3D(0.178209, 0, -0.120276, 0, 0.215, 0, 0.120276, 0, 0.178209, 14.9206, 1.0214, -23.5325)
-player_path = NodePath("../../Player")
+[node name="Marker3D" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135.606, 0, -135.03)
+
+[node name="Marker3D2" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.6508, 0, -135.03)
+
+[node name="Marker3D3" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.1848, 0, -135.03)
+
+[node name="Marker3D4" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.7708, 0, -135.03)
+
+[node name="Marker3D5" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.8755, 0, -135.03)
+
+[node name="Marker3D6" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138.831, 0, -135.03)
+
+[node name="Marker3D8" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 139.3, 0, -73.6642)
+
+[node name="Marker3D9" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 138.44, 0, -29.2065)
+
+[node name="Marker3D10" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 137.261, 0, 31.7377)
+
+[node name="Marker3D11" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 136.35, 0, 78.8336)
+
+[node name="Marker3D12" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 135.171, 0, 139.778)
+
+[node name="Marker3D7" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(-1, 0, -0.000698241, 0, 1, 0, 0.000698241, 0, -1, 136.532, 0, 121.796)
+
+[node name="Marker3D13" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(-1, 0, -0.000698241, 0, 1, 0, 0.000698241, 0, -1, 75.5768, 0, 121.839)
+
+[node name="Marker3D14" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(-1, 0, -0.000698241, 0, 1, 0, 0.000698241, 0, -1, 31.1107, 0, 121.87)
+
+[node name="Marker3D15" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(-1, 0, -0.000698241, 0, 1, 0, 0.000698241, 0, -1, -29.8449, 0, 121.912)
+
+[node name="Marker3D16" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(-1, 0, -0.000698241, 0, 1, 0, 0.000698241, 0, -1, -76.9496, 0, 121.945)
+
+[node name="Marker3D17" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(-1, 0, -0.000698241, 0, 1, 0, 0.000698241, 0, -1, -137.905, 0, 121.988)
+
+[node name="Marker3D18" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(0.000698284, 0, -1, 0, 1, 0, 1, 0, 0.000698284, -138.416, 0, 60.6216)
+
+[node name="Marker3D19" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(0.000698284, 0, -1, 0, 1, 0, 1, 0, 0.000698284, -137.588, 0, 16.1633)
+
+[node name="Marker3D20" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(0.000698284, 0, -1, 0, 1, 0, 1, 0, 0.000698284, -136.451, 0, -44.7817)
+
+[node name="Marker3D21" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(0.000698284, 0, -1, 0, 1, 0, 1, 0, 0.000698284, -135.573, 0, -91.8783)
+
+[node name="Marker3D22" type="Marker3D" parent="EnemySpawnPoints"]
+transform = Transform3D(0.000698284, 0, -1, 0, 1, 0, 1, 0, 0.000698284, -134.437, 0, -152.823)
 
 [node name="Player" parent="." instance=ExtResource("1_itanj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 2, 250)
@@ -19717,5 +19787,29 @@ material = ExtResource("5_vpecs")
 texture_list = ExtResource("6_5b1xr")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-visible = false
 navigation_mesh = SubResource("NavigationMesh_flduu")
+
+[node name="Enemy 1" parent="NavigationRegion3D" instance=ExtResource("32_aa5ef")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 251.82, 1.00079, 238.652)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HitFeedback" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 2
+offset_left = -37.0
+offset_top = -15.0
+offset_right = 1175.0
+offset_bottom = 664.0
+color = Color(0.494118, 0, 0, 0.219608)
+
+[node name="ZombieSpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="player_hit" from="Player" to="." method="_on_player_player_hit"]
+[connection signal="timeout" from="ZombieSpawnTimer" to="." method="_on_zombie_spawn_timer_timeout"]

@@ -1,14 +1,18 @@
 extends CharacterBody3D
 
 
-const WALK_SPEED = 5.0
-const SPRINT_SPEED = 7.0
+const WALK_SPEED = 3.0
+const SPRINT_SPEED = 5.0
 const JUMP_VELOCITY = 5.0
 const SENSITIVITY = 0.001
+const HIT_STAGGER = 8.0
 
-var gravity = 9.8 #ProjectSettings.get_setting("physics/3d/default_gravity")
+var gravity = 9.8
 var t_bob = 0.0
 var speed = 5.0
+
+signal player_hit
+signal player_ready
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
@@ -23,6 +27,7 @@ var speed = 5.0
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$Body.visible = false
+	emit_signal("player_ready", self)
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -72,3 +77,7 @@ func headbob(time) -> Vector3:
 	pos.x = sin(time * bob_frequency / 2) * bob_amplitude
 	return pos
 
+func hit(dir):
+	emit_signal("player_hit")
+	velocity.x += dir.x * HIT_STAGGER
+	velocity.z += dir.z * HIT_STAGGER

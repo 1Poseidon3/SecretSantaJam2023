@@ -42,7 +42,7 @@ func _unhandled_input(event):
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(look_down_limit), deg_to_rad(look_up_limit))
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_pressed("shoot"):
 		shoot()
 	
 	if Input.is_action_just_pressed("action"):
@@ -102,8 +102,8 @@ func hit(dir):
 	velocity.z += dir.z * HIT_STAGGER
 
 func shoot():
-	if ammo_in_gun > 0:
-		if !gun_anim.is_playing():
+	if !gun_anim.is_playing():
+		if ammo_in_gun > 0:
 			gun_anim.play("Shoot")
 
 func buy():

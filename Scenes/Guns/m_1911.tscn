@@ -1,10 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwjoavyyn312p"]
+[gd_scene load_steps=12 format=3 uid="uid://cwjoavyyn312p"]
 
 [ext_resource type="PackedScene" uid="uid://cki7ndpo665sx" path="res://Assets/PSXMiscGuns/1911/1911.fbx" id="1_etii5"]
+[ext_resource type="AudioStream" uid="uid://cqgd8bapuijea" path="res://Assets/Sounds/1911Shot.wav" id="2_qdm4n"]
+[ext_resource type="AudioStream" uid="uid://b6qm3qgmdguhs" path="res://Assets/Sounds/GunEmptyClick.wav" id="3_far3p"]
+[ext_resource type="AudioStream" uid="uid://d35xqhtiitgi3" path="res://Assets/Sounds/1911DropMag.wav" id="3_rq2vg"]
+[ext_resource type="AudioStream" uid="uid://wj6k4pvwm5rk" path="res://Assets/Sounds/1911InsertMag.wav" id="4_lcy6f"]
+[ext_resource type="AudioStream" uid="uid://dkapfmh5uk5r4" path="res://Assets/Sounds/1911SlideRack.wav" id="5_hhk5d"]
 
 [sub_resource type="Animation" id="Animation_yhejv"]
 resource_name = "Shoot"
-length = 0.1
+length = 0.4
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -13,7 +18,7 @@ tracks/0/path = NodePath("RootNode:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.01, 0.1),
+"times": PackedFloat32Array(0, 0.04, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.05, 0, 0), Vector3(0, 0, 0)]
@@ -25,7 +30,7 @@ tracks/1/path = NodePath("RootNode:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.01, 0.1),
+"times": PackedFloat32Array(0, 0.04, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0.261799), Vector3(0, 0, 0)]
@@ -37,7 +42,7 @@ tracks/2/path = NodePath("RootNode/1911_Slide:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.01, 0.1),
+"times": PackedFloat32Array(0, 0.04, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0.35017, 1.66805, 0.00482913), Vector3(-0.25, 1.668, 0.005), Vector3(0.35017, 1.66805, 0.00482913)]
@@ -90,10 +95,26 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector3(-0.263908, 1.23572, 1.66029e-07), Vector3(-0.3, 1.236, 0), Vector3(-0.263908, 1.23572, 1.66029e-07)]
 }
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("GunSounds")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_qdm4n")
+}],
+"times": PackedFloat32Array(0.01)
+}
+tracks/7/use_blend = true
 
 [sub_resource type="Animation" id="Animation_4n3qq"]
 resource_name = "Empty"
-length = 0.01
+length = 0.03
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -130,6 +151,21 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GunSounds")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_far3p")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_mxyoq"]
 resource_name = "Reload"
@@ -153,10 +189,10 @@ tracks/1/path = NodePath("RootNode/1911_Mag:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.8, -3, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.8, -3, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -218,6 +254,29 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector3(-1.7, 1.9, 0), Vector3(-1.7, 1.9, 0), Vector3(-1.7, 1.9, 0)]
 }
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("GunSounds")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 0.243475,
+"start_offset": 0.0,
+"stream": ExtResource("3_rq2vg")
+}, {
+"end_offset": 0.185728,
+"start_offset": 0.0,
+"stream": ExtResource("4_lcy6f")
+}, {
+"end_offset": 0.106911,
+"start_offset": 0.0,
+"stream": ExtResource("5_hhk5d")
+}],
+"times": PackedFloat32Array(0.05, 0.66, 0.86)
+}
+tracks/7/use_blend = true
 
 [sub_resource type="Animation" id="Animation_1yd2b"]
 resource_name = "Reload Not Empty"
@@ -233,7 +292,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.0001, 0.0002, 0.05, 0.8, 0.85),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1.5, 0), Vector3(1, 1, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1.5, 0), Vector3(1, 1.5, 0), Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -259,6 +318,25 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.8, -3, 0), Vector3(-0.8, -3, 0), Vector3(0, 0, 0)]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GunSounds")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.328926,
+"start_offset": 0.0,
+"stream": ExtResource("3_rq2vg")
+}, {
+"end_offset": 0.197433,
+"start_offset": 0.0,
+"stream": ExtResource("4_lcy6f")
+}],
+"times": PackedFloat32Array(0.05, 0.62)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uxukj"]
 _data = {
@@ -274,7 +352,7 @@ _data = {
 cast_shadow = 0
 
 [node name="1911_Slide" parent="RootNode" index="1"]
-transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0.35, 1.668, 0.005)
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, -0.18, 1.668, 0.005)
 cast_shadow = 0
 
 [node name="1911_Hammer" parent="RootNode" index="2"]
@@ -285,11 +363,11 @@ cast_shadow = 0
 cast_shadow = 0
 
 [node name="1911_Mag" parent="RootNode" index="4"]
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, -0.8, -3, 0)
 cast_shadow = 0
 
 [node name="45ACP" parent="RootNode" index="5"]
 transform = Transform3D(-3.8147e-06, 100, 0, -100, -3.8147e-06, 0, 0, 0, 100, -1.7, 1.9, 0)
-visible = false
 cast_shadow = 0
 
 [node name="45ACP_Shell" parent="RootNode" index="6"]
@@ -298,9 +376,13 @@ cast_shadow = 0
 
 [node name="1911_Mag_Full" parent="RootNode" index="7"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
+visible = false
 cast_shadow = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_uxukj")
 }
+
+[node name="GunSounds" type="AudioStreamPlayer3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60333, 0)

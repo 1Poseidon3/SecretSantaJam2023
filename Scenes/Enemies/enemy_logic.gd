@@ -2,12 +2,12 @@ extends CharacterBody3D
 
 var player = null
 var state_machine
-var runner = false;
+var runner : bool = false;
 
-const SPEED = 1
-const ATTACK_RANGE = 1.5
-const ATTACK_ANIM_SPEED = 1
-const WALK_ANIM_SPEED = 1
+const SPEED : float = 1.0
+const ATTACK_RANGE : float = 1.5
+const ATTACK_ANIM_SPEED : float = 1.0
+const WALK_ANIM_SPEED : float = 1.0
 
 @onready var player_path := get_tree().get_first_node_in_group("Player")
 @onready var nav_agent = $NavigationAgent3D

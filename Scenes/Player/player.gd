@@ -19,7 +19,7 @@ signal player_ready
 
 @onready var head : Node3D = $Head
 @onready var camera : Camera3D = $Head/Camera3D
-@onready var raycast : RayCast3D = $Head/RayCast3D
+@onready var raycast : RayCast3D = $Head/InteractRayCast
 @onready var gun_anim : AnimationPlayer = $Head/Camera3D/Gun.get_child(0).get_child(1)
 @onready var ammo_HUD : RichTextLabel = $HUD/Ammo
 @onready var health_HUD : RichTextLabel = $HUD/Health

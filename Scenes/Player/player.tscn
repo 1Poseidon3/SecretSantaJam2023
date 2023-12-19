@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b75pyc6cs5vc1"]
+[gd_scene load_steps=6 format=3 uid="uid://b75pyc6cs5vc1"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_h23ow"]
 [ext_resource type="PackedScene" uid="uid://cwjoavyyn312p" path="res://Scenes/Guns/m_1911.tscn" id="2_i2b00"]
+[ext_resource type="FontFile" uid="uid://bmjwlti4kokqy" path="res://Assets/Fonts/NjalBold-gx4E5.otf" id="3_gqlkv"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_pwlxr"]
 
@@ -34,3 +35,66 @@ transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.819571, 0)
 target_position = Vector3(0, 0, -3)
 collision_mask = 9
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1112.0
+offset_bottom = -608.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ammo" type="RichTextLabel" parent="HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.275
+anchor_top = 16.2
+anchor_right = 0.275
+anchor_bottom = 16.2
+offset_top = -140.0
+offset_right = 234.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("3_gqlkv")
+theme_override_fonts/bold_font = ExtResource("3_gqlkv")
+theme_override_fonts/italics_font = ExtResource("3_gqlkv")
+theme_override_fonts/bold_italics_font = ExtResource("3_gqlkv")
+theme_override_fonts/mono_font = ExtResource("3_gqlkv")
+theme_override_font_sizes/normal_font_size = 100
+text = "7 / 35"
+
+[node name="Health" type="RichTextLabel" parent="HUD"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -6.0
+offset_top = -22.0
+offset_right = 213.0
+offset_bottom = 126.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("3_gqlkv")
+theme_override_font_sizes/normal_font_size = 100
+text = "100%"
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="EmptyClickTimer" type="Timer" parent="Timers"]
+wait_time = 0.4
+one_shot = true
+autostart = true
+
+[node name="StartHealthRegenTimer" type="Timer" parent="Timers"]
+wait_time = 5.0
+one_shot = true
+
+[node name="HealthRegenTickTimer" type="Timer" parent="Timers"]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Timers/StartHealthRegenTimer" to="." method="_on_start_health_regen_timer_timeout"]
+[connection signal="timeout" from="Timers/HealthRegenTickTimer" to="." method="_on_health_regen_tick_timer_timeout"]

@@ -19783,16 +19783,6 @@ wall_min_slide_angle = 1.0472
 look_down_limit = -80
 look_up_limit = 80
 
-[node name="Head" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.930171, 0)
-
-[node name="Camera3D" type="Camera3D" parent="Player/Head"]
-
-[node name="RayCast3D" type="RayCast3D" parent="Player/Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.819571, 0)
-target_position = Vector3(0, 0, -3)
-collision_mask = 9
-
 [node name="Terrain3D" type="Terrain3D" parent="."]
 storage = ExtResource("4_x74rf")
 material = ExtResource("5_vpecs")

@@ -12,7 +12,6 @@ var t_bob : float = 0.0
 var speed : float = 5.0
 var current_ammo_in_gun : int = 0
 var current_ammo_in_reserve : int = 0
-var empty : bool = false
 
 signal player_hit
 signal player_healed
@@ -24,9 +23,10 @@ signal player_ready
 @onready var gun_anim : AnimationPlayer = $Head/Camera3D/Gun.get_child(0).get_child(1)
 @onready var ammo_HUD : RichTextLabel = $HUD/Ammo
 @onready var health_HUD : RichTextLabel = $HUD/Health
-@onready var empty_click_timer : Timer = $Timers/EmptyClickTimer
 @onready var start_health_regen_timer : Timer = $Timers/StartHealthRegenTimer
 @onready var health_regen_tick_timer : Timer = $Timers/HealthRegenTickTimer
+@onready var gun_click_timer : Timer = $Timers/GunClickTimer
+@onready var gun_sounds : AudioStreamPlayer3D = $Head/Camera3D/Gun.get_child(0).get_child(2)
 
 @export var look_down_limit : int = -40
 @export var look_up_limit : int = 60
@@ -101,10 +101,6 @@ func _process(_delta):
 			colliding_object.show_price()
 	health_HUD.text = str(Globals.player_health) + "%"
 	ammo_HUD.text = str(current_ammo_in_gun) + "/" + str(current_ammo_in_reserve)
-	if Globals.m1911_ammo_in_gun <= 0 and empty and empty_click_timer.is_stopped() and !gun_anim.is_playing():
-		#gun_anim.play("Empty")
-		empty = false
-		empty_click_timer.start()
 	if Globals.player_health > 100:
 		Globals.player_health = 100
 
@@ -129,8 +125,11 @@ func shoot():
 			else:
 				gun_anim.play("Shoot")
 			Globals.m1911_ammo_in_gun -= 1
-		if Globals.m1911_ammo_in_gun <= 0:
-			empty = true
+		else:
+			if !gun_sounds.is_playing() and gun_click_timer.is_stopped():
+				gun_sounds.stream = preload("res://Assets/Sounds/GunEmptyClick.wav")
+				gun_sounds.play()
+				gun_click_timer.start()
 	current_ammo_in_gun = Globals.m1911_ammo_in_gun
 
 func buy():
@@ -151,7 +150,6 @@ func reload():
 			Globals.m1911_ammo_in_reserve -= ammo_to_remove_from_reserve
 	current_ammo_in_gun = Globals.m1911_ammo_in_gun
 	current_ammo_in_reserve = Globals.m1911_ammo_in_reserve
-	empty = false
 
 
 func _on_health_regen_tick_timer_timeout():

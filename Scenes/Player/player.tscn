@@ -83,11 +83,6 @@ text = "100%"
 
 [node name="Timers" type="Node" parent="."]
 
-[node name="EmptyClickTimer" type="Timer" parent="Timers"]
-wait_time = 0.4
-one_shot = true
-autostart = true
-
 [node name="StartHealthRegenTimer" type="Timer" parent="Timers"]
 wait_time = 5.0
 one_shot = true
@@ -95,6 +90,11 @@ one_shot = true
 [node name="HealthRegenTickTimer" type="Timer" parent="Timers"]
 wait_time = 3.0
 one_shot = true
+
+[node name="GunClickTimer" type="Timer" parent="Timers"]
+wait_time = 0.4
+one_shot = true
+autostart = true
 
 [connection signal="timeout" from="Timers/StartHealthRegenTimer" to="." method="_on_start_health_regen_timer_timeout"]
 [connection signal="timeout" from="Timers/HealthRegenTickTimer" to="." method="_on_health_regen_tick_timer_timeout"]

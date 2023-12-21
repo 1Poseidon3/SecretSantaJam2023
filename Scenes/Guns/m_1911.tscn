@@ -373,10 +373,10 @@ tracks/2/path = NodePath("RootNode/1911_Slide:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.04),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.04, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0.35017, 1.66805, 0.00482913), Vector3(-0.25, 1.668, 0.005)]
+"values": [Vector3(0.35017, 1.66805, 0.00482913), Vector3(-0.25, 1.668, 0.005), Vector3(-0.18, 1.668, 0.005)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -409,10 +409,10 @@ tracks/5/path = NodePath("RootNode/45ACP:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.01, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.17799, 2.01822, 2.83671e-07), Vector3(-1.8, 2.018, 0), Vector3(-1.17799, 2.01822, 2.83671e-07)]
+"values": [Vector3(-3, -3, 0)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -441,6 +441,30 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0.01)
 }
 tracks/7/use_blend = true
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("RootNode/1911_Mag:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("RootNode/1911_Mag_Full:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.8, -3, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_j2nnr"]
 resource_name = "Regular"
@@ -476,11 +500,10 @@ cast_shadow = 0
 
 [node name="45ACP" parent="RootNode" index="5"]
 transform = Transform3D(-3.8147e-06, 100, 0, -100, -3.8147e-06, 0, 0, 0, 100, -1.17799, 2.01822, 2.83671e-07)
-visible = false
 cast_shadow = 0
 
 [node name="45ACP_Shell" parent="RootNode" index="6"]
-transform = Transform3D(-4.37114e-06, 100, 0, -100, -4.37114e-06, 0, 0, 0, 100, -1.13013, 2.22269, 2.83671e-07)
+transform = Transform3D(1.19249e-06, -100, 0, 100, 1.19249e-06, 0, 0, 0, 100, -1.6, 2.223, 5)
 cast_shadow = 0
 
 [node name="1911_Mag_Full" parent="RootNode" index="7"]

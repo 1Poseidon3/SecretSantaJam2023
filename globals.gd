@@ -1,6 +1,8 @@
 extends Node
 
 var player_health : int = 100
+var points : int = 0
+var score : int = 0
 var m1911_ammo_in_gun : int = 7
 var m1911_ammo_in_reserve : int = 35
 

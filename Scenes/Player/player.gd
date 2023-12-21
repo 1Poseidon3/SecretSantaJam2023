@@ -23,10 +23,13 @@ signal player_ready
 @onready var gun_anim : AnimationPlayer = $Head/Camera3D/Gun.get_child(0).get_child(1)
 @onready var ammo_HUD : RichTextLabel = $HUD/Ammo
 @onready var health_HUD : RichTextLabel = $HUD/Health
+@onready var points_HUD : RichTextLabel = $HUD/Points
 @onready var start_health_regen_timer : Timer = $Timers/StartHealthRegenTimer
 @onready var health_regen_tick_timer : Timer = $Timers/HealthRegenTickTimer
 @onready var gun_click_timer : Timer = $Timers/GunClickTimer
 @onready var gun_sounds : AudioStreamPlayer3D = $Head/Camera3D/Gun.get_child(0).get_child(2)
+@onready var crosshair: TextureRect = $HUD/Crosshair
+@onready var shoot_raycast : RayCast3D = $Head/Camera3D/HitscanShootRayCast
 
 @export var look_down_limit : int = -40
 @export var look_up_limit : int = 60
@@ -42,6 +45,8 @@ func _ready():
 	current_ammo_in_gun = Globals.m1911_ammo_in_gun
 	current_ammo_in_reserve = Globals.m1911_ammo_in_reserve
 	gun_anim.play("Regular")
+	crosshair.position.x = get_viewport().size.x / 2 - 32
+	crosshair.position.y = get_viewport().size.y / 2 - 32
 	emit_signal("player_ready", self)
 
 func _unhandled_input(event):
@@ -103,6 +108,7 @@ func _process(_delta):
 	ammo_HUD.text = str(current_ammo_in_gun) + "/" + str(current_ammo_in_reserve)
 	if Globals.player_health > 100:
 		Globals.player_health = 100
+	points_HUD.text = str(Globals.points)
 
 func headbob(time) -> Vector3:
 	var pos = Vector3.ZERO
@@ -125,6 +131,12 @@ func shoot():
 			else:
 				gun_anim.play("Shoot")
 			Globals.m1911_ammo_in_gun -= 1
+			if shoot_raycast.is_colliding():
+				if shoot_raycast.get_collider().is_in_group("Enemy"):
+					if shoot_raycast.get_collider().has_method("hit"):
+						shoot_raycast.get_collider().hit()
+					else:
+						shoot_raycast.get_collider().get_parent().get_parent().get_parent().get_parent().hit()
 		else:
 			if !gun_sounds.is_playing() and gun_click_timer.is_stopped():
 				gun_sounds.stream = preload("res://Assets/Sounds/GunEmptyClick.wav")

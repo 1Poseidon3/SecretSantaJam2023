@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b75pyc6cs5vc1"]
+[gd_scene load_steps=7 format=3 uid="uid://b75pyc6cs5vc1"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_h23ow"]
 [ext_resource type="PackedScene" uid="uid://cwjoavyyn312p" path="res://Scenes/Guns/m_1911.tscn" id="2_i2b00"]
 [ext_resource type="FontFile" uid="uid://bmjwlti4kokqy" path="res://Assets/Fonts/NjalBold-gx4E5.otf" id="3_gqlkv"]
+[ext_resource type="Texture2D" uid="uid://btmfh8hrj4tq6" path="res://Assets/Crosshairs/crosshair008.png" id="4_lyps5"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_pwlxr"]
 
@@ -30,6 +31,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.506394, -0.711215, -0.65703
 
 [node name="M1911" parent="Head/Camera3D/Gun" instance=ExtResource("2_i2b00")]
 transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 0, 0, 0)
+
+[node name="HitscanShootRayCast" type="RayCast3D" parent="Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.45)
+target_position = Vector3(0, -1, -100)
+collision_mask = 2
+collide_with_areas = true
 
 [node name="InteractRayCast" type="RayCast3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.819571, 0)
@@ -80,6 +87,29 @@ theme_override_constants/outline_size = 10
 theme_override_fonts/normal_font = ExtResource("3_gqlkv")
 theme_override_font_sizes/normal_font_size = 100
 text = "100%"
+
+[node name="Points" type="RichTextLabel" parent="HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 28.55
+anchor_top = 0.175
+anchor_right = 28.55
+anchor_bottom = 0.175
+offset_left = -916.0
+offset_bottom = 87.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("3_gqlkv")
+theme_override_font_sizes/normal_font_size = 100
+text = "0"
+text_direction = 2
+
+[node name="Crosshair" type="TextureRect" parent="HUD"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("4_lyps5")
 
 [node name="Timers" type="Node" parent="."]
 

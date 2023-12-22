@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://cslcf4nu6jh73" path="res://Scenes/Guns/rifle.tscn" id="3_04stg"]
 [ext_resource type="FontFile" uid="uid://bmjwlti4kokqy" path="res://Assets/Fonts/NjalBold-gx4E5.otf" id="3_gqlkv"]
 [ext_resource type="PackedScene" uid="uid://dlmukktwayyhg" path="res://Scenes/Guns/shotgun.tscn" id="4_j0mx1"]
-[ext_resource type="Texture2D" uid="uid://btmfh8hrj4tq6" path="res://Assets/Crosshairs/crosshair008.png" id="4_lyps5"]
 [ext_resource type="Texture2D" uid="uid://cyfr1g6it8pee" path="res://Assets/UI/GUI-Kit-Pack-Free_54.png" id="4_x6m52"]
 [ext_resource type="Texture2D" uid="uid://8qrwjac4232p" path="res://Assets/UI/GUI-Kit-Pack-Free_32.png" id="5_knq76"]
 [ext_resource type="AudioStream" uid="uid://dxnw4v3nq85t1" path="res://Assets/Sounds/footstep1.wav" id="7_rt203"]
@@ -13,6 +12,9 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_pwlxr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pi6im"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_em64o"]
+load_path = "res://.godot/imported/crosshair008.png-9a6b4ba2d41093da51ddf23e645554ac.ctex"
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 collision_layer = 133
@@ -156,7 +158,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
-texture = ExtResource("4_lyps5")
+texture = SubResource("CompressedTexture2D_em64o")
 
 [node name="FadeOut" type="ColorRect" parent="HUD"]
 modulate = Color(0, 0, 0, 1)

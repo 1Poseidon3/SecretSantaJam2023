@@ -11,6 +11,8 @@ config_version=5
 [application]
 
 config/name="Secret Santa Jam 2023"
+config/description="Game made for Franz4417 for the Secret Santa Game Jam 2023"
+config/version="0.0.1"
 run/main_scene="res://Scenes/World/world.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
@@ -18,6 +20,12 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globals="*res://globals.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/borderless=true
 
 [editor_plugins]
 

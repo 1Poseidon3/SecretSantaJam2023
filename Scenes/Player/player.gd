@@ -118,7 +118,7 @@ func _physics_process(delta):
 		sprinting = false
 		footstep_timer.wait_time = 0.8
 	
-	if (Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("left") or Input.is_action_pressed("right")) and footstep_timer.is_stopped():
+	if (Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("left") or Input.is_action_pressed("right")) and footstep_timer.is_stopped() and is_on_floor():
 		sound_player.play()
 		footstep_timer.start()
 	

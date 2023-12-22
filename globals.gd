@@ -2,6 +2,8 @@ extends Node
 
 #region Global Variables
 var player_health : int = 100
+var max_player_health : int = 100
+var max_sprint_speed : float = 5.0
 var points : int = 0
 var score : int = 0
 var m1911_ammo_in_gun : int = 7

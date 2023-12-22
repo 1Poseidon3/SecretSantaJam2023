@@ -2,13 +2,16 @@ extends CharacterBody3D
 
 #region Constants
 const WALK_SPEED : float = 3.0
-const SPRINT_SPEED : float = 5.0
 const JUMP_VELOCITY : float = 5.0
 const HIT_STAGGER : float = 8.0
+const HEALTH_POWERUP_MESSAGE : String = "MAX HEALTH INCREASED"
+const SPRINT_SPEED_POWERUP_MESSAGE : String = "SPRINT SPEED INCREASED"
+const AMMO_POWERUP_MESSAGE : String = "AMMUNITION REPLENISHED"
 #endregion
 
 #region Variables
 var sensitivity : float = 0.001
+var sprint_speed : float = 5.0
 var gravity : float = 9.8
 var t_bob : float = 0.0
 var speed : float = 5.0
@@ -41,6 +44,7 @@ signal restart_game
 @onready var ammo_HUD : RichTextLabel = $HUD/Ammo
 @onready var health_HUD : RichTextLabel = $HUD/Health
 @onready var points_HUD : RichTextLabel = $HUD/Points
+@onready var message_HUD : RichTextLabel = $HUD/Message
 @onready var stamina_HUD : TextureProgressBar = $HUD/Stamina
 @onready var start_health_regen_timer : Timer = $Timers/StartHealthRegenTimer
 @onready var health_regen_tick_timer : Timer = $Timers/HealthRegenTickTimer
@@ -49,6 +53,7 @@ signal restart_game
 @onready var lower_stamina_timer : Timer = $Timers/LowerStaminaTimer
 @onready var footstep_timer : Timer = $Timers/FootstepTimer
 @onready var game_restart_timer : Timer = $Timers/GameRestartTimer
+@onready var message_disappear_timer : Timer = $Timers/MessageDisappearTimer
 @onready var gun_sounds : AudioStreamPlayer3D = $Head/Camera3D/Gun/M1911.get_child(2)
 @onready var crosshair: TextureRect = $HUD/Crosshair
 @onready var shoot_raycast : RayCast3D = $Head/Camera3D/HitscanShootRayCast
@@ -100,7 +105,7 @@ func _physics_process(delta):
 		
 	if Input.is_action_pressed("sprint") and can_sprint:
 		footstep_timer.wait_time = 0.3
-		speed = SPRINT_SPEED
+		speed = sprint_speed
 		stamina_recharge_timer.stop()
 		sprinting = true
 		if lower_stamina_timer.is_stopped():
@@ -133,7 +138,7 @@ func _physics_process(delta):
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = headbob(t_bob)
 	
-	var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
+	var velocity_clamped = clamp(velocity.length(), 0.5, sprint_speed * 2)
 	var target_fov = base_fov + fov_change * velocity_clamped
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	
@@ -153,9 +158,9 @@ func _process(_delta):
 	points_HUD.text = str(Globals.points)
 	#endregion
 	
-	#region Reset health if over 100
-	if Globals.player_health > 100:
-		Globals.player_health = 100
+	#region Reset health if over max allowed health
+	if Globals.player_health > Globals.max_player_health:
+		Globals.player_health = Globals.max_player_health
 	#endregion
 	
 	#region Stamina
@@ -261,6 +266,10 @@ func _process(_delta):
 		current_ammo_in_gun = Globals.shotgun_ammo_in_gun
 		current_ammo_in_reserve = Globals.shotgun_ammo_in_reserve
 	#endregion
+	
+	#region Max sprint change
+	sprint_speed = Globals.max_sprint_speed
+	#endregion
 
 func headbob(time) -> Vector3:
 	var pos = Vector3.ZERO
@@ -335,7 +344,7 @@ func shoot():
 func buy():
 	if interact_raycast.is_colliding():
 		var colliding_object = interact_raycast.get_collider()
-		if colliding_object.is_in_group("Door"):
+		if colliding_object.is_in_group("Door") or colliding_object.is_in_group("Car"):
 			if Globals.points >= colliding_object.price:
 				Globals.points -= colliding_object.price
 				colliding_object.bought = true
@@ -379,15 +388,36 @@ func reload():
 			shotgun_reload = true
 		#endregion
 
+func update_hud(type: int):
+	message_disappear_timer.start()
+	if type == 0:
+		if current_gun == 0:
+			current_ammo_in_gun = Globals.m1911_ammo_in_gun
+			current_ammo_in_reserve = Globals.m1911_ammo_in_reserve
+		elif current_gun == 1:
+			current_ammo_in_gun = Globals.rifle_ammo_in_gun
+			current_ammo_in_reserve = Globals.rifle_ammo_in_gun
+		else:
+			current_ammo_in_gun = Globals.shotgun_ammo_in_gun
+			current_ammo_in_reserve = Globals.shotgun_ammo_in_gun
+		message_HUD.text = AMMO_POWERUP_MESSAGE
+		message_HUD.visible = true
+	elif type == 1:
+		message_HUD.text = SPRINT_SPEED_POWERUP_MESSAGE
+		message_HUD.visible = true
+	else:
+		message_HUD.text = HEALTH_POWERUP_MESSAGE
+		message_HUD.visible = true
+
 func _on_health_regen_tick_timer_timeout():
 	Globals.player_health += 10
 	emit_signal("player_healed")
 	health_regen_tick_timer.start()
-	if Globals.player_health >= 100:
+	if Globals.player_health >= Globals.max_player_health:
 		health_regen_tick_timer.stop()
 
 func _on_start_health_regen_timer_timeout():
-	if Globals.player_health < 100:
+	if Globals.player_health < Globals.max_player_health:
 		Globals.player_health += 10
 		emit_signal("player_healed")
 		health_regen_tick_timer.start()
@@ -397,3 +427,6 @@ func _on_stamina_recharge_timer_timeout():
 
 func _on_game_restart_timer_timeout():
 	emit_signal("restart_game")
+
+func _on_message_disappear_timer_timeout():
+	message_HUD.visible = false

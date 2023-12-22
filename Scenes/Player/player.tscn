@@ -120,6 +120,22 @@ theme_override_font_sizes/normal_font_size = 100
 text = "0"
 text_direction = 2
 
+[node name="Message" type="RichTextLabel" parent="HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 15.1
+anchor_top = 11.812
+anchor_right = 15.1
+anchor_bottom = 11.812
+offset_left = -438.0
+offset_top = -45.48
+offset_right = 438.0
+offset_bottom = 45.52
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("3_gqlkv")
+theme_override_font_sizes/normal_font_size = 100
+
 [node name="Stamina" type="TextureProgressBar" parent="HUD"]
 layout_mode = 1
 anchors_preset = -1
@@ -185,6 +201,10 @@ one_shot = true
 wait_time = 5.0
 one_shot = true
 
+[node name="MessageDisappearTimer" type="Timer" parent="Timers"]
+wait_time = 3.0
+one_shot = true
+
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.373316, 0)
 stream = ExtResource("7_rt203")
@@ -195,3 +215,4 @@ pitch_scale = 0.8
 [connection signal="timeout" from="Timers/HealthRegenTickTimer" to="." method="_on_health_regen_tick_timer_timeout"]
 [connection signal="timeout" from="Timers/StaminaRechargeTimer" to="." method="_on_stamina_recharge_timer_timeout"]
 [connection signal="timeout" from="Timers/GameRestartTimer" to="." method="_on_game_restart_timer_timeout"]
+[connection signal="timeout" from="Timers/MessageDisappearTimer" to="." method="_on_message_disappear_timer_timeout"]

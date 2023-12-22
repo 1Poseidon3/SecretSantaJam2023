@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bv7vdkhbo1x0q"]
+[gd_scene load_steps=9 format=3 uid="uid://bv7vdkhbo1x0q"]
 
 [ext_resource type="Texture2D" uid="uid://dfjccxvi1ls4m" path="res://Assets/Low Poly Food/refe.jpg" id="1_ciogq"]
+[ext_resource type="Script" path="res://Scenes/Powerups/power_up_1.gd" id="1_fw64w"]
+[ext_resource type="AudioStream" uid="uid://cllrcfk7b76nm" path="res://Assets/Sounds/purchase.wav" id="3_cd55y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wb67b"]
 resource_name = "Material.035"
@@ -45,7 +47,14 @@ shadow_mesh = SubResource("ArrayMesh_o80pf")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oouqo"]
 points = PackedVector3Array(-0.974928, -1.67254, 0.222344, -0.434022, -1.67254, 0.900969, -0.974928, 1.27334, 0.222344, -0.781965, -1.67254, -0.623565, -0.704093, -2.2449, 0.0297534, -0.841515, -1.91095, 0.185128, 0.433831, -1.67254, 0.900969, -0.434022, 1.27334, 0.900969, -0.608089, -1.91095, 0.477828, -0.374473, -1.91095, 0.770715, -0.206323, -2.2449, 0.653672, -0.729096, 1.82687, 0.153681, -0.781965, 1.27334, -0.623565, -0.000190914, -1.67254, -1, -0.000190914, -1.91095, -0.869932, -0.674891, -1.91095, -0.54504, -0.615151, -2.2449, -0.359707, 0.192962, -2.2449, 0.653672, 0.374282, -1.91095, 0.770715, 0.49109, -1.91095, 0.624272, 0.841324, -1.91095, 0.185128, 0.974928, -1.67254, 0.222344, 0.433831, 1.27334, 0.900969, -0.324467, 1.82687, 0.660929, -0.584613, 1.82687, -0.478797, -0.0849341, 2.44793, 0.136004, -0.190481, 2.44793, 0.00351655, -0.152881, 2.44793, -0.16172, -0.000190914, 1.82687, -0.760332, -0.000190914, 1.27334, -1, 0.781775, -1.67254, -0.623565, 0.10402, -2.2449, -0.705997, 0.463797, -2.2449, -0.532759, 0.6747, -1.91095, -0.54504, 0.974928, 1.27334, 0.222344, 0.324276, 1.82687, 0.660929, 0.0847431, 2.44793, 0.136004, -0.000190914, 2.44793, -0.235221, 0.584422, 1.82687, -0.478797, 0.781775, 1.27334, -0.623565, 0.15269, 2.44793, -0.16172, 0.728715, 1.82687, 0.153681, 0.19029, 2.44793, 0.00351655)
 
-[node name="PowerUp1" type="StaticBody3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_l4lyj"]
+size = Vector3(1.65887, 3.2695, 1.52533)
+
+[node name="Power Up 1" type="StaticBody3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_fw64w")
 
 [node name="Cylinder_032" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.675547, 0, 0, 0, 0.675547, 0, 0, 0, 0.675547, 0, 0, 0)
@@ -55,3 +64,15 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.675547, 0, 0, 0, 0.675547, 0, 0, 0, 0.675547, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_oouqo")
+
+[node name="Ammo Replenish Pickup" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ammo Replenish Pickup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0198669, 0.219193, 0.00479126)
+shape = SubResource("BoxShape3D_l4lyj")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_cd55y")
+
+[connection signal="body_entered" from="Ammo Replenish Pickup" to="." method="_on_ammo_replenish_pickup_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]

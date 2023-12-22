@@ -2,6 +2,8 @@ extends Node3D
 
 #region Constants
 const DEFAULT_PLAYER_HEALTH : int = 100
+const DEFAULT_MAX_PLAYER_HEALTH : int = 100
+const DEFAULT_MAX_SPRINT_SPEED : float = 5.0
 const DEFAULT_POINTS : int = 0
 const DEFAULT_SCORE : int = 0
 const DEFAULT_M1911_AMMO_IN_GUN : int = 7
@@ -24,6 +26,18 @@ const DEFAULT_SHOTGUN_AMMO_IN_RESERVE : int = 48
 @onready var shotgun_pickup : Node3D = $Guns/Shotgun
 @onready var rifle_pickup_sound : AudioStreamPlayer3D = $"Guns/Rifle/Rifle Pickup Sound Player"
 @onready var shotgun_pickup_sound : AudioStreamPlayer3D = $"Guns/Shotgun/Shotgun Pickup Sound Player"
+@onready var powerup1 : StaticBody3D = $"Powerups/Power Up 1 Cabin 1"
+@onready var powerup2 : StaticBody3D = $"Powerups/Power Up 2 Cabin 1"
+@onready var powerup3 : StaticBody3D = $"Powerups/Power Up 3 Cabin 1"
+@onready var powerup4 : StaticBody3D = $"Powerups/Power Up 1 Cabin 2"
+@onready var powerup5 : StaticBody3D = $"Powerups/Power Up 2 Cabin 2"
+@onready var powerup6 : StaticBody3D = $"Powerups/Power Up 3 Cabin 2"
+@onready var powerup7 : StaticBody3D = $"Powerups/Power Up 1 Cabin 3"
+@onready var powerup8 : StaticBody3D = $"Powerups/Power Up 2 Cabin 3"
+@onready var powerup9 : StaticBody3D = $"Powerups/Power Up 3 Cabin 3"
+@onready var powerup10 : StaticBody3D = $"Powerups/Power Up 4 Cabin 1"
+@onready var powerup11 : StaticBody3D = $"Powerups/Power Up 5 Cabin 1"
+@onready var powerup12 : StaticBody3D = $"Powerups/Power Up 6 Cabin 1"
 #endregion
 
 #region Variables
@@ -35,6 +49,8 @@ var tween : Tween
 func _ready():
 	randomize()
 	Globals.player_health = DEFAULT_PLAYER_HEALTH
+	Globals.max_player_health = DEFAULT_MAX_PLAYER_HEALTH
+	Globals.max_sprint_speed = DEFAULT_MAX_SPRINT_SPEED
 	Globals.points = DEFAULT_POINTS
 	Globals.score = DEFAULT_SCORE
 	Globals.m1911_ammo_in_gun = DEFAULT_M1911_AMMO_IN_GUN
@@ -49,14 +65,27 @@ func _ready():
 	player_hud.get_child(0).visible = true
 	player_hud.get_child(1).visible = true
 	player_hud.get_child(2).visible = true
-	player_hud.get_child(3).visible = true
+	player_hud.get_child(3).visible = false
 	player_hud.get_child(4).visible = true
-	player_hud.get_child(5).color = Color(0, 0, 0, 0)
+	player_hud.get_child(5).visible = true
+	player_hud.get_child(6).color = Color(0, 0, 0, 0)
 	tween = get_tree().create_tween().set_parallel(true)
 	# Hacky solution. I tried everything to get the tweens to loop indefinitely
 	# Spinning 10,000 times ought to do the trick (I hope)
 	tween.tween_property(rifle_pickup, "rotation_degrees:y", 3600000, 70000)
 	tween.tween_property(shotgun_pickup, "rotation_degrees:y", 3600000, 70000)
+	tween.tween_property(powerup1, "rotation_degrees:y", 3600000, 70000)
+	tween.tween_property(powerup2, "rotation_degrees:y", 3600000, 70000)
+	tween.tween_property(powerup3, "rotation_degrees:y", 3600000, 70000)
+	tween.tween_property(powerup4, "rotation_degrees:y", 3600000, 70000)
+	tween.tween_property(powerup5, "rotation_degrees:y", 3600000, 70000)
+	tween.tween_property(powerup6, "rotation_degrees:y", 3600000, 70000)
+	tween.tween_property(powerup7, "rotation_degrees:y", 3600000, 70000)
+	tween.tween_property(powerup8, "rotation_degrees:y", 3600000, 70000)
+	tween.tween_property(powerup9, "rotation_degrees:y", 3600000, 70000)
+	tween.tween_property(powerup10, "rotation_degrees:y", 3600000, 70000)
+	tween.tween_property(powerup11, "rotation_degrees:y", 3600000, 70000)
+	tween.tween_property(powerup12, "rotation_degrees:y", 3600000, 70000)
 
 func _on_player_player_hit():
 	hit_feedback.visible = true
@@ -83,10 +112,12 @@ func _on_player_restart_game():
 
 func _on_rifle_pickup_trigger_body_entered(body):
 	body.rifle_unlocked = true
+	rifle_pickup.visible = false
 	rifle_pickup_sound.play()
 
 func _on_shotgun_pickup_trigger_body_entered(body):
 	body.shotgun_unlocked = true
+	shotgun_pickup.visible = false
 	shotgun_pickup_sound.play()
 
 func _on_rifle_pickup_sound_player_finished():

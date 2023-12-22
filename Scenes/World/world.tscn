@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://bpi2h3ukqi8yd"]
+[gd_scene load_steps=61 format=3 uid="uid://bpi2h3ukqi8yd"]
 
 [ext_resource type="PackedScene" uid="uid://b75pyc6cs5vc1" path="res://Scenes/Player/player.tscn" id="1_itanj"]
 [ext_resource type="Script" path="res://Scenes/World/world.gd" id="1_o5wvq"]
@@ -44,6 +44,9 @@
 [ext_resource type="PackedScene" uid="uid://80g3ymro6tt2" path="res://Scenes/Cars/car.tscn" id="33_p7ld5"]
 [ext_resource type="AudioStream" uid="uid://cllrcfk7b76nm" path="res://Assets/Sounds/purchase.wav" id="34_upktw"]
 [ext_resource type="PackedScene" uid="uid://dlmukktwayyhg" path="res://Scenes/Guns/shotgun.tscn" id="34_yvo1f"]
+[ext_resource type="PackedScene" uid="uid://bv7vdkhbo1x0q" path="res://Scenes/Powerups/power_up_1.tscn" id="40_kvjuw"]
+[ext_resource type="PackedScene" uid="uid://b6c4lh8mow3os" path="res://Scenes/Powerups/power_up_2.tscn" id="41_r7e4j"]
+[ext_resource type="PackedScene" uid="uid://sev2cns4ig3u" path="res://Scenes/Powerups/power_up_3.tscn" id="42_kxmfp"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_g8b12"]
 panorama = ExtResource("2_sb3kc")
@@ -19903,7 +19906,7 @@ price = 500
 
 [node name="Cabin2Door2" parent="Doors" instance=ExtResource("32_la08h")]
 transform = Transform3D(-2.12914, 0, -0.0604793, 0, 2.13, 0, 0.0604793, 0, -2.12914, -49.9456, 2.50604, -2.2874)
-price = 1000
+price = 500
 
 [node name="Cabin2Door3" parent="Doors" instance=ExtResource("32_la08h")]
 transform = Transform3D(-2.12914, 0, -0.0604793, 0, 2.13, 0, 0.0604793, 0, -2.12914, -50.0464, 2.50604, -5.75769)
@@ -19918,16 +19921,16 @@ transform = Transform3D(2.02672, 0, 0.655203, 0, 2.13, 0, -0.655203, 0, 2.02672,
 price = 1000
 
 [node name="Cabin3Door2" parent="Doors" instance=ExtResource("32_la08h")]
-transform = Transform3D(2.02672, 0, 0.655203, 0, 2.13, 0, -0.655203, 0, 2.02672, -0.561935, 2.50604, -41.1797)
-price = 1000
+transform = Transform3D(2.02672, 0, 0.655203, 0, 2.13, 0, -0.655203, 0, 2.02672, -0.544067, 2.50604, -41.1389)
+price = 600
 
 [node name="Cabin3Door3" parent="Doors" instance=ExtResource("32_la08h")]
 transform = Transform3D(2.02672, 0, 0.655203, 0, 2.13, 0, -0.655203, 0, 2.02672, -1.20758, 2.50604, -43.1683)
-price = 1000
+price = 700
 
 [node name="Cabin3Door4" parent="Doors" instance=ExtResource("32_la08h")]
 transform = Transform3D(-0.617918, 0, 2.0384, 0, 2.13, 0, -2.0384, 0, -0.617918, -2.21059, 2.50604, -40.9647)
-price = 3000
+price = 1000
 
 [node name="EnemySpawnPoints" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 0, 250)
@@ -20028,6 +20031,45 @@ shape = SubResource("BoxShape3D_nl72s")
 
 [node name="Shotgun Pickup Sound Player" type="AudioStreamPlayer3D" parent="Guns/Shotgun"]
 stream = ExtResource("34_upktw")
+
+[node name="Powerups" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 0, 250)
+
+[node name="Power Up 1 Cabin 1" parent="Powerups" instance=ExtResource("40_kvjuw")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 19.6911, 1.63737, 22.9392)
+
+[node name="Power Up 2 Cabin 1" parent="Powerups" instance=ExtResource("41_r7e4j")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 26.321, 1.63737, 30.4875)
+
+[node name="Power Up 3 Cabin 1" parent="Powerups" instance=ExtResource("42_kxmfp")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 22.4251, 1.63737, 27.6206)
+
+[node name="Power Up 1 Cabin 2" parent="Powerups" instance=ExtResource("40_kvjuw")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -53.3439, 1.72225, 0.930817)
+
+[node name="Power Up 2 Cabin 2" parent="Powerups" instance=ExtResource("41_r7e4j")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -54.0721, 1.8757, -4.09898)
+
+[node name="Power Up 3 Cabin 2" parent="Powerups" instance=ExtResource("42_kxmfp")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -52.7127, 1.8757, -9.52583)
+
+[node name="Power Up 1 Cabin 3" parent="Powerups" instance=ExtResource("40_kvjuw")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.00575, 1.60691, -41.8359)
+
+[node name="Power Up 2 Cabin 3" parent="Powerups" instance=ExtResource("41_r7e4j")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -5.8013, 1.60691, -43.5456)
+
+[node name="Power Up 3 Cabin 3" parent="Powerups" instance=ExtResource("42_kxmfp")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.99203, 1.60691, -45.9118)
+
+[node name="Power Up 4 Cabin 1" parent="Powerups" instance=ExtResource("40_kvjuw")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 30.3953, 1.63737, 26.7295)
+
+[node name="Power Up 5 Cabin 1" parent="Powerups" instance=ExtResource("41_r7e4j")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 33.2292, 1.63737, 24.6631)
+
+[node name="Power Up 6 Cabin 1" parent="Powerups" instance=ExtResource("42_kxmfp")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 32.3784, 1.63737, 26.3978)
 
 [node name="Car" parent="." groups=["Ground"] instance=ExtResource("33_p7ld5")]
 transform = Transform3D(-0.389944, 0, 0.920839, 0, 1, 0, -0.920839, 0, -0.389944, 272.925, 1.02445, 233.228)

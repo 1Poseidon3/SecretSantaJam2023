@@ -1,15 +1,23 @@
 extends StaticBody3D
 
+#region Constants
 const MOVE_SPEED = 3.0
+#endregion
 
+#region Variables
 var bought : bool = false
 var sound_played : bool = false
+#endregion
 
+#region On Ready Variables
 @onready var price_tag1 : Label3D = $Price1
 @onready var price_tag2 : Label3D = $Price2
 @onready var sound_player : AudioStreamPlayer3D = $AudioStreamPlayer3D
+#endregion
 
+#region Export Variables
 @export var price : int
+#endregion
 
 func _ready():
 	price_tag1.text = str(price)

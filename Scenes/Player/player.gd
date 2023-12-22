@@ -18,8 +18,8 @@ var stamina : int = 100
 var can_sprint : bool = true
 var sprinting : bool = false
 var current_gun : int = 0
-var rifle_unlocked : bool = true
-var shotgun_unlocked : bool = true
+var rifle_unlocked : bool = false
+var shotgun_unlocked : bool = false
 var switch_guns : bool = false
 var switch_direction : bool = false
 var current_gun_made_not_visible : bool = false
@@ -30,6 +30,7 @@ var shotgun_reload : bool = false
 signal player_hit
 signal player_healed
 signal player_ready
+signal restart_game
 #endregion
 
 #region On Ready Variables
@@ -47,6 +48,7 @@ signal player_ready
 @onready var stamina_recharge_timer : Timer = $Timers/StaminaRechargeTimer
 @onready var lower_stamina_timer : Timer = $Timers/LowerStaminaTimer
 @onready var footstep_timer : Timer = $Timers/FootstepTimer
+@onready var game_restart_timer : Timer = $Timers/GameRestartTimer
 @onready var gun_sounds : AudioStreamPlayer3D = $Head/Camera3D/Gun/M1911.get_child(2)
 @onready var crosshair: TextureRect = $HUD/Crosshair
 @onready var shoot_raycast : RayCast3D = $Head/Camera3D/HitscanShootRayCast
@@ -176,17 +178,22 @@ func _process(_delta):
 	
 	#region Death
 	if Globals.player_health <= 0:
+		if game_restart_timer.is_stopped():
+			game_restart_timer.start()
 		sensitivity = 0.0
 		var tween = get_tree().create_tween()
 		tween.set_parallel(true)
 		tween.tween_property(camera, "rotation", Vector3(0.25, -0.25, 0.25), 0.25)
 		tween.tween_property(camera, "position:y", -1.5, 0.25)
+		tween.tween_property(fade_out, "color", Color(0, 0, 0, 1), 3)
 		ammo_HUD.visible = false
 		health_HUD.visible = false
 		points_HUD.visible = false
 		stamina_HUD.visible = false
 		crosshair.visible = false
-		tween.tween_property(fade_out, "color:a", 1, 10)
+		health_regen_tick_timer.stop()
+		start_health_regen_timer.stop()
+		footstep_timer.stop()
 	#endregion
 	
 	#region Switch guns
@@ -235,7 +242,7 @@ func _process(_delta):
 	
 	if Input.is_action_just_pressed("ScrollUp"):
 		gun_anim = $Head/Camera3D/Gun.get_child(current_gun).get_child(1)
-		gun_anim.play("Switch On")
+		gun_anim.play("Switch Off")
 		switch_direction = true
 		switch_guns = true
 		current_gun_made_not_visible = false
@@ -279,11 +286,9 @@ func shoot():
 					gun_anim.play("Shoot")
 				Globals.m1911_ammo_in_gun -= 1
 				if shoot_raycast.is_colliding():
-					if shoot_raycast.get_collider().is_in_group("Enemy"):
-						if shoot_raycast.get_collider().has_method("hit"):
-							shoot_raycast.get_collider().hit(0)
-						else:
-							shoot_raycast.get_collider().get_parent().get_parent().get_parent().get_parent().hit()
+					if shoot_raycast.get_collider().get_parent().is_in_group("Enemy"):
+						if shoot_raycast.get_collider().get_parent().has_method("hit"):
+							shoot_raycast.get_collider().get_parent().hit(0)
 			else:
 				if !gun_sounds.is_playing() and gun_click_timer.is_stopped():
 					gun_sounds.stream = preload("res://Assets/Sounds/GunEmptyClick.wav")
@@ -300,11 +305,9 @@ func shoot():
 					gun_anim.play("Shoot")
 				Globals.rifle_ammo_in_gun -= 1
 				if shoot_raycast.is_colliding():
-					if shoot_raycast.get_collider().is_in_group("Enemy"):
-						if shoot_raycast.get_collider().has_method("hit"):
-							shoot_raycast.get_collider().hit(1)
-						else:
-							shoot_raycast.get_collider().get_parent().get_parent().get_parent().get_parent().hit()
+					if shoot_raycast.get_collider().get_parent().is_in_group("Enemy"):
+						if shoot_raycast.get_collider().get_parent().has_method("hit"):
+							shoot_raycast.get_collider().get_parent().hit(1)
 			else:
 				if !gun_sounds.is_playing() and gun_click_timer.is_stopped():
 					gun_sounds.stream = preload("res://Assets/Sounds/GunEmptyClick.wav")
@@ -318,11 +321,9 @@ func shoot():
 				gun_anim.play("Shoot")
 				Globals.shotgun_ammo_in_gun -= 1
 				if shoot_raycast.is_colliding():
-					if shoot_raycast.get_collider().is_in_group("Enemy"):
-						if shoot_raycast.get_collider().has_method("hit"):
-							shoot_raycast.get_collider().hit(2)
-						else:
-							shoot_raycast.get_collider().get_parent().get_parent().get_parent().get_parent().hit()
+					if shoot_raycast.get_collider().get_parent().is_in_group("Enemy"):
+						if shoot_raycast.get_collider().get_parent().has_method("hit"):
+							shoot_raycast.get_collider().get_parent().hit(2)
 			else:
 				if !gun_sounds.is_playing() and gun_click_timer.is_stopped():
 					gun_sounds.stream = preload("res://Assets/Sounds/GunEmptyClick.wav")
@@ -393,3 +394,6 @@ func _on_start_health_regen_timer_timeout():
 
 func _on_stamina_recharge_timer_timeout():
 	can_sprint = true
+
+func _on_game_restart_timer_timeout():
+	emit_signal("restart_game")

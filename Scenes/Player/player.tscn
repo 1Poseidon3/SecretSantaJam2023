@@ -8,13 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://cyfr1g6it8pee" path="res://Assets/UI/GUI-Kit-Pack-Free_54.png" id="4_x6m52"]
 [ext_resource type="Texture2D" uid="uid://8qrwjac4232p" path="res://Assets/UI/GUI-Kit-Pack-Free_32.png" id="5_knq76"]
 [ext_resource type="AudioStream" uid="uid://dxnw4v3nq85t1" path="res://Assets/Sounds/footstep1.wav" id="7_rt203"]
+[ext_resource type="Texture2D" uid="uid://diebqtajgqgy" path="res://Assets/Crosshairs/crosshair159.png" id="8_hkkj4"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_pwlxr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pi6im"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_em64o"]
-load_path = "res://.godot/imported/crosshair008.png-9a6b4ba2d41093da51ddf23e645554ac.ctex"
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 collision_layer = 133
@@ -158,7 +156,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
-texture = SubResource("CompressedTexture2D_em64o")
+texture = ExtResource("8_hkkj4")
 
 [node name="FadeOut" type="ColorRect" parent="HUD"]
 modulate = Color(0, 0, 0, 1)

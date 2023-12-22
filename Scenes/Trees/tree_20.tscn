@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxoj0luhb0bsk"]
+[gd_scene load_steps=7 format=3 uid="uid://cxoj0luhb0bsk"]
 
 [ext_resource type="Texture2D" uid="uid://cli8l6c40ju4y" path="res://Assets/tree_pack_1.1/textures/tree20.png" id="1_nln8r"]
 
@@ -46,6 +46,10 @@ alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("1_nln8r")
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4km05"]
+radius = 0.402864
+height = 11.5005
+
 [node name="Tree20" type="StaticBody3D"]
 
 [node name="tree20" type="MeshInstance3D" parent="."]
@@ -53,3 +57,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 1.62921e-07, 0, -1.62921e-07, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_wyr54")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_0pvpp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.77942, 0)
+shape = SubResource("CapsuleShape3D_4km05")

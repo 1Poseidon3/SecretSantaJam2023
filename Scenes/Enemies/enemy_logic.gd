@@ -24,7 +24,7 @@ const WALK_ANIM_SPEED : float = 1.0
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
 @onready var zombie_noise_timer : Timer = $ZombieNoiseTimer
 @onready var sound_player : AudioStreamPlayer3D = $ZombieSoundPlayer
-@onready var collider : CollisionShape3D = $CollisionShape3D
+@onready var collider : CollisionShape3D = $RootNode/CollisionShape3D
 #endregion
 
 func _ready():

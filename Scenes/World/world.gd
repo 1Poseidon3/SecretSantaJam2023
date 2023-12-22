@@ -5,11 +5,11 @@ const DEFAULT_PLAYER_HEALTH : int = 100
 const DEFAULT_POINTS : int = 0
 const DEFAULT_SCORE : int = 0
 const DEFAULT_M1911_AMMO_IN_GUN : int = 7
-const DEFAULT_M1911_AMMO_IN_RESERVE : int = 35
+const DEFAULT_M1911_AMMO_IN_RESERVE : int = 56
 const DEFAULT_RIFLE_AMMO_IN_GUN : int = 20
-const DEFAULT_RIFLE_AMMO_IN_RESERVE : int = 60
+const DEFAULT_RIFLE_AMMO_IN_RESERVE : int = 100
 const DEFAULT_SHOTGUN_AMMO_IN_GUN : int = 6
-const DEFAULT_SHOTGUN_AMMO_IN_RESERVE : int = 30
+const DEFAULT_SHOTGUN_AMMO_IN_RESERVE : int = 48
 #endregion
 
 #region On Ready Variables
@@ -22,6 +22,8 @@ const DEFAULT_SHOTGUN_AMMO_IN_RESERVE : int = 30
 @onready var player_hud : Control = $Player.get_child(3)
 @onready var rifle_pickup : Node3D = $Guns/Rifle
 @onready var shotgun_pickup : Node3D = $Guns/Shotgun
+@onready var rifle_pickup_sound : AudioStreamPlayer3D = $"Guns/Rifle/Rifle Pickup Sound Player"
+@onready var shotgun_pickup_sound : AudioStreamPlayer3D = $"Guns/Shotgun/Shotgun Pickup Sound Player"
 #endregion
 
 #region Variables
@@ -81,8 +83,14 @@ func _on_player_restart_game():
 
 func _on_rifle_pickup_trigger_body_entered(body):
 	body.rifle_unlocked = true
-	rifle_pickup.queue_free()
+	rifle_pickup_sound.play()
 
 func _on_shotgun_pickup_trigger_body_entered(body):
 	body.shotgun_unlocked = true
+	shotgun_pickup_sound.play()
+
+func _on_rifle_pickup_sound_player_finished():
+	rifle_pickup.queue_free()
+
+func _on_shotgun_pickup_sound_player_finished():
 	shotgun_pickup.queue_free()

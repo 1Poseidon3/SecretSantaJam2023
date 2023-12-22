@@ -1,0 +1,371 @@
+[gd_scene load_steps=15 format=3 uid="uid://dlmukktwayyhg"]
+
+[ext_resource type="PackedScene" uid="uid://dp8d82fk031j7" path="res://Assets/PSXMiscGuns/TaticalShotgun/TacticalShotgun.fbx" id="1_i81so"]
+[ext_resource type="AudioStream" uid="uid://dyei8j65xmsw3" path="res://Assets/Sounds/shotgunshot.wav" id="2_d1v18"]
+[ext_resource type="AudioStream" uid="uid://brcrde5aixnbd" path="res://Assets/Sounds/shotgunshelldrop.wav" id="3_icikr"]
+[ext_resource type="AudioStream" uid="uid://cekp3os5xfbpu" path="res://Assets/Sounds/shotgunload.wav" id="4_8ilra"]
+[ext_resource type="AudioStream" uid="uid://du4abyi3fycu0" path="res://Assets/Sounds/shotgunrack.wav" id="5_c8gr3"]
+[ext_resource type="AudioStream" uid="uid://b5a0tfmxkbvcp" path="res://Assets/Sounds/riflemagin.wav" id="7_wht18"]
+
+[sub_resource type="Animation" id="Animation_ili54"]
+resource_name = "Shoot"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("RootNode/TacticalShotgun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.97686, -3.60872, -4.84864e-07), Vector3(1, -3.609, 0), Vector3(1.997, -3.609, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("RootNode/TacticalShotgun:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.62921e-07, 0, 0), Vector3(0, 0, 0.174533), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RootNode/ShellLowPolyGreen_001:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-3.5, 0.55, 0), Vector3(-5.5, 0.35, 0), Vector3(-3.5, 0.55, 10)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RootNode/ShellLowPolyGreen_001:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.02),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -1.5708), Vector3(0, 0, -1.5708)]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer3D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_d1v18")
+}],
+"times": PackedFloat32Array(0.02)
+}
+tracks/4/use_blend = true
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer3D2")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_icikr")
+}],
+"times": PackedFloat32Array(0.25)
+}
+tracks/5/use_blend = true
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("RootNode:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.25, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("RootNode:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.261799), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7ptsd"]
+resource_name = "Regular"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RootNode:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w3i4i"]
+resource_name = "Reload Start"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("RootNode/TacticalShotgun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.997, -3.609, 0), Vector3(1.997, -1.5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RootNode:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_r8rjb"]
+resource_name = "Shell In"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("RootNode/TacticalShotgun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.997, -1.5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RootNode/ShellLowPolyGreen_001:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.17),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-3.5, -3, 0), Vector3(-3.5, 2.55, 0), Vector3(-3.5, -3, 0)]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.6206,
+"start_offset": 0.0,
+"stream": ExtResource("4_8ilra")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/2/use_blend = true
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RootNode/ShellLowPolyGreen_001:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.16, 0.28),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RootNode:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u11lm"]
+resource_name = "Reload End"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("RootNode/TacticalShotgun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.997, -1.5, 0), Vector3(1.997, -3.609, 0)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.2273,
+"stream": ExtResource("5_c8gr3")
+}],
+"times": PackedFloat32Array(0.01)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RootNode:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_15cv6"]
+resource_name = "Switch Off"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RootNode:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -2, 0)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.2337,
+"start_offset": 0.0,
+"stream": ExtResource("5_c8gr3")
+}],
+"times": PackedFloat32Array(0.01)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_be6pb"]
+resource_name = "Switch On"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RootNode:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -2, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.155,
+"start_offset": 0.0735,
+"stream": ExtResource("7_wht18")
+}],
+"times": PackedFloat32Array(0.16)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fk4xv"]
+_data = {
+"Regular": SubResource("Animation_7ptsd"),
+"Reload End": SubResource("Animation_u11lm"),
+"Reload Start": SubResource("Animation_w3i4i"),
+"Shell In": SubResource("Animation_r8rjb"),
+"Shoot": SubResource("Animation_ili54"),
+"Switch Off": SubResource("Animation_15cv6"),
+"Switch On": SubResource("Animation_be6pb")
+}
+
+[node name="Shotgun" instance=ExtResource("1_i81so")]
+
+[node name="RootNode" parent="." index="0"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="TacticalShotgun" parent="RootNode" index="0"]
+transform = Transform3D(244.58, 0, 0, 0, 244.58, -3.98472e-05, 0, 3.98472e-05, 244.58, 1.997, -1.5, 0)
+
+[node name="ShellLowPolyGreen_001" parent="RootNode" index="1"]
+transform = Transform3D(-1.0691e-05, 244.58, 0, -244.58, -1.0691e-05, 0, 0, 0, 244.58, -3.5, -3, 0)
+
+[node name="ShellLowPolyRed_001" parent="RootNode" index="2"]
+transform = Transform3D(244.58, 0, 0, 0, 244.58, -3.98472e-05, 0, 3.98472e-05, 244.58, 1.97686, -10.2702, -4.84864e-07)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_fk4xv")
+}
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="2"]
+volume_db = -5.0
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="." index="3"]
+volume_db = -10.0
